@@ -11,10 +11,12 @@ class VocabularioSerializer(serializers.Serializer):
         Create and return a new `Vocabulario` instance, given the validated data.
         """
         return Vocabulario.objects.create(**validated_data)
+    
+    def update(self, instance, validated_data):
+        instance.palabra = validated_data.get('word', instance.word)
+        instance.definicion = validated_data.get('definition', instance.definition)
+        return instance
 
-    def get_queryset(self):
-        palabra = self.request.query_params.get('palabra', None)
-        return palabra
     
 
    

@@ -15,8 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from vocabulario.urls import router
 
 urlpatterns = [
-    path('', include(('vocabulario.urls', 'vocabulario'))),
+    path('', include((router.urls, 'vocabulario'))),
 ]
